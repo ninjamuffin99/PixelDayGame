@@ -22,19 +22,20 @@ startb.y=tasky-5
 --just used for collision
 startb.w=16
 startb.h=11
+startb.anim=2
 
 --mouseshit
 mousepos={}
-mousepos.x=stat(32)-1
-mousepos.y=stat(33)-1
-mousepos.w=stat(32)+1
-mousepos.h=stat(33)+1
+mousepos.x=stat(32)
+mousepos.y=stat(33)
+mousepos.w=1
+mousepos.h=1
 
 function _draw()
 	cls()
 	
 	rectfill(0, tasky, size, size, 7)
-	spr(2, startb.x,startb.y,2,2)
+	spr(startb.anim, startb.x,startb.y,2,2)
 	print(pressing)
 	
 	spr(6,30,30,2,2)
@@ -97,7 +98,9 @@ function _update()
 	end
 	
 	if (pressing and overlap(mousepos,startb)) then
-		sfx(02)
+		startb.anim=4
+	else
+		startb.anim=2
 	end
 	
 end
@@ -113,19 +116,17 @@ function mouse()
 		pressing = false
 	end
 	
-	mousepos.x=stat(32)-1
-	mousepos.y=stat(33)-1
-	mousepos.w=stat(32)+1
-	mousepos.h=stat(33)+1
+	mousepos.x=stat(32)
+	mousepos.y=stat(33)
 	
 end
 
 function overlap(a,b)
-	local test1 = a.x>(b.x+b.w)
-	local test2=a.y>(b.y+b.h)
-	local test3=(a.x+a.w)<b.x
-	local test4=(a.y+a.h)<b.y
-	return not (test1 or test2 or test3 or test4)
+ local test1 = a.x > (b.x + b.w)
+ local test2 = a.y > (b.y + b.h)
+ local test3 = (a.x + a.w) < b.x
+ local test4 = (a.y + a.h) < b.y
+ return not (test1 or test2 or test3 or test4)
 end
 __gfx__
 00000000050000000666666666666660000000000000000055555555555555550000000000000000000000000000000000000000000000000000000000000000
