@@ -48,7 +48,7 @@ function _draw()
 	spr(6,30,30,2,2)
 
 	if pressingstart == true then
-		draw_window(10,10,size*0.7,size*0.7,"chat")
+		draw_window(10,10,size*0.7,size*0.7,"chat 1.35")
 	end
 	
 	chat_manager();
@@ -76,7 +76,7 @@ function _draw()
 end
 
 chat={""}
-chat.x=20
+chat.x=13
 chat.y=20
 
 windows={}
@@ -89,13 +89,14 @@ end
 
 function add_message(v)
 	print("chat: " .. v)
-	
 end
 
 function draw_window(x,y,w,h,name)
 	rectfill(x,y,x+w,y+h,13)
 	rectfill(x,y,x+w,y+7,7)
 	print(name,x+2,y+2,13)
+	--dummy print to set placement
+	print("",x+2,y+10,13)
 	rect(x,y,x+w,y+h,14)
 end
 
