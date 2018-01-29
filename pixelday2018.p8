@@ -88,7 +88,7 @@ function chat_manager()
 end
 
 function add_message(v)
-	print("chat: " .. v)
+	print("chat:" .. v)
 end
 
 function draw_window(x,y,w,h,name)
